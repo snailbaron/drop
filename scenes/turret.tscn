@@ -5,11 +5,11 @@
 [ext_resource type="AudioStream" uid="uid://beboub2temjcc" path="res://assets/sounds/explosion-91872.mp3" id="3_oj13o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x475k"]
-radius = 20.025
+radius = 19.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vx11e"]
 resource_local_to_scene = true
-radius = 181.648
+radius = 223.0
 
 [node name="Turret" type="StaticBody2D"]
 script = ExtResource("1_0bbh8")
@@ -21,8 +21,6 @@ shape = SubResource("CircleShape2D_x475k")
 texture_filter = 1
 scale = Vector2(3, 3)
 texture = ExtResource("1_5bq2o")
-
-[node name="Timer" type="Timer" parent="."]
 
 [node name="ProximityRange" type="Area2D" parent="."]
 

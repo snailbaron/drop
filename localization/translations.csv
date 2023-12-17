@@ -1,2 +1,11 @@
 ﻿keys,en,ru
+GAME_NAME,Drop Dead,Drop Dead
 MAIN_MENU_NEW_GAME,New Game,Новая игра
+MAIN_MENU_QUIT,Quit,Выход
+MAIN_MENU_SETTINGS,Settings,Настройки
+MENU_BACK,Back,Назад
+MENU_QUIT_GAME,Quit Game,Выйти из игры
+MENU_QUIT_TO_MAIN_MENU,Return to Title,Вернуться в главное меню
+MENU_RETURN_TO_GAME,Return to Game,Вернуться в игру
+SETTINGS_ENABLE_MUSIC,Music,Музыка
+SETTINGS_LANGUAGE,Language,Язык

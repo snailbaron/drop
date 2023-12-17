@@ -5,7 +5,7 @@ extends CanvasLayer
 
 func on_hp_change(hp: int):
 	print("UI got on_hp_change")
-	for i in range(hp):	
+	for i in range(min(hp, 10)):
 		hp_bar.get_child(i).visible = true
 	for i in range(hp, 10):
 		hp_bar.get_child(i).visible = false

@@ -8,10 +8,30 @@ extends CharacterBody2D
 
 signal hp_changed
 
+@onready var sprite = $AnimatedSprite2D
+@onready var death_sound = $DeathSound
+
 var acceleration = max_speed / seconds_to_full_speed
 var deceleration = max_speed / seconds_to_full_stop
 
 var hp = max_hp
+var direction: Vector2 = Vector2.UP
+
+
+func _direction(vector: Vector2) -> String:
+	var sector_names = [
+		"right",
+		"down right",
+		"down",
+		"down left",
+		"left",
+		"up left",
+		"up",
+		"up right"
+	]
+	var relative_angle = fposmod(vector.angle() + PI / 8, 2 * PI)
+	var sector = int(relative_angle * 8 / (2 * PI))
+	return sector_names[sector]
 
 
 func _process_input(delta):
@@ -43,23 +63,21 @@ func _process_input(delta):
 
 
 func _update_animation():
-	if velocity.x > 0:
-		$AnimatedSprite2D.flip_h = false
-	elif velocity.x < 0:
-		$AnimatedSprite2D.flip_h = true
 	var speed = velocity.length()
-	if speed == 0:
-		$AnimatedSprite2D.animation = "idle"
-	elif speed <= walk_speed:
-		$AnimatedSprite2D.animation = "walk"
-	else:
-		$AnimatedSprite2D.animation = "run"
+	
+	var action = "idle"
+	if speed > max_speed * 0.1:
+		action = "walk"
+		direction = velocity.normalized()
+		
+	var direction_name = _direction(direction)
+	sprite.animation = "%s %s" % [action, direction_name]
 
 
 func _ready():
 	hp = max_hp
 	print("player ready, player hp " + str(hp) + ", max hp " + str(max_hp))
-	$AnimatedSprite2D.play()
+	sprite.play()
 	print("emitting hp_changed: " + str(hp))
 	hp_changed.emit(hp)
 
@@ -73,7 +91,8 @@ func _physics_process(delta):
 	
 func _die():
 	velocity = Vector2.ZERO
-	$AnimatedSprite2D.animation = "dead"
+	sprite.animation = "death"
+	death_sound.play()
 	
 	
 func hit(damage):

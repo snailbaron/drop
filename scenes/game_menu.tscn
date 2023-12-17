@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bb1q3b2uv8jst"]
+
+[node name="GameMenu" type="CanvasLayer"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.5
+offset_top = -20.0
+offset_right = 117.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ReturnToGameButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "MENU_RETURN_TO_GAME"
+
+[node name="QuitToMainMenuButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "MENU_QUIT_TO_MAIN_MENU"
+
+[node name="QuitGameButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "MENU_QUIT_GAME"
