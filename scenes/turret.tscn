@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://daxhw7yvoqrxy"]
+
+[ext_resource type="Script" path="res://scripts/turret.gd" id="1_0bbh8"]
+[ext_resource type="Texture2D" uid="uid://cpohpoeex0xj2" path="res://assets/turret/turret.png" id="1_5bq2o"]
+[ext_resource type="AudioStream" uid="uid://beboub2temjcc" path="res://assets/sounds/explosion-91872.mp3" id="3_oj13o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x475k"]
+radius = 20.025
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vx11e"]
+resource_local_to_scene = true
+radius = 181.648
+
+[node name="Turret" type="StaticBody2D"]
+script = ExtResource("1_0bbh8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x475k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("1_5bq2o")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="ProximityRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProximityRange"]
+shape = SubResource("CircleShape2D_vx11e")
+
+[node name="ShotSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_oj13o")
+
+[connection signal="body_entered" from="ProximityRange" to="." method="_on_proximity_range_body_entered"]
+[connection signal="body_exited" from="ProximityRange" to="." method="_on_proximity_range_body_exited"]
