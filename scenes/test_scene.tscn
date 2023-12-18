@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5ye3m2r00hmv"]
+
+[ext_resource type="Script" path="res://scripts/test_scene.gd" id="1_8kfbd"]
+[ext_resource type="PackedScene" uid="uid://ddk02ec51eqsr" path="res://scenes/player.tscn" id="1_v4qgk"]
+[ext_resource type="PackedScene" uid="uid://dqa5ebtw13olh" path="res://scenes/shooter.tscn" id="2_6d7b0"]
+
+[node name="TestScene" type="Node"]
+script = ExtResource("1_8kfbd")
+
+[node name="Player" parent="." instance=ExtResource("1_v4qgk")]
+position = Vector2(551, 578)
+max_hp = 1000
+
+[node name="Shooter" parent="." instance=ExtResource("2_6d7b0")]
+position = Vector2(545, 106)
+
+[connection signal="spawn_bullet" from="Shooter" to="." method="_on_shooter_spawn_bullet"]

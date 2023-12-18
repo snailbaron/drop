@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://0qanvmiodof4"]
+
+[ext_resource type="Texture2D" uid="uid://bv0ge65hgtwxm" path="res://assets/textures/hero.png" id="1_hewlv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2l34l"]
+atlas = ExtResource("1_hewlv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8oskh"]
+atlas = ExtResource("1_hewlv")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1238"]
+atlas = ExtResource("1_hewlv")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sesni"]
+atlas = ExtResource("1_hewlv")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ik7ly"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2l34l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8oskh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1238")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sesni")
+}],
+"loop": true,
+"name": &"walk up",
+"speed": 5.0
+}]
+
+[node name="ShooterEnemy" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.8, 0.2, 0.145098, 1)
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ik7ly")
+animation = &"walk up"
